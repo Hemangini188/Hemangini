@@ -11,7 +11,7 @@ env:
   FILE_NAME: ''
   TEMP_DIR: 'temp-repo'
   SECURITY_SCAN_API: 'https://d9dfd45c2f2f.ngrok-free.app/v1/startSecurityScan'
-  PROJECT_ID: 'bcac5436-0214-4dab-9916-21e1b0041a84'
+  PROJECT_ID: 'f1c7af8d-4c73-4bdd-882f-f573e9e5d726'
   BLOCK_PIPELINE: 'true'
   BLOCK_CRITICAL: 'true'
   BLOCK_HIGH: 'true'
