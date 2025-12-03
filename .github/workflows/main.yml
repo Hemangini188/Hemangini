@@ -10,8 +10,8 @@ env:
   BRANCH: ''
   FILE_NAME: ''
   TEMP_DIR: 'temp-repo'
-  SECURITY_SCAN_API: 'https://github.com/v1/startSecurityScan'
-  PROJECT_ID: ''
+  SECURITY_SCAN_API: 'https://d9dfd45c2f2f.ngrok-free.app/v1/startSecurityScan'
+  PROJECT_ID: 'b0604b4a-16db-4324-82d1-4f5ae42d4f49'
   BLOCK_PIPELINE: 'false'
   BLOCK_CRITICAL: 'true'
   BLOCK_HIGH: 'true'
@@ -20,8 +20,8 @@ env:
   HIGH_THRESHOLD: 0
   MEDIUM_THRESHOLD: 0
   APPKEYTOKEN: '3cadeb4b-3e68-48c7-ad45-8c48fc519b6a'
-  UPLOAD_API_URL: 'https://github.com/v1/webHook'
-  REPORT_API: 'https://github.com/v1/integrationPdf'
+  UPLOAD_API_URL: 'https://d9dfd45c2f2f.ngrok-free.app/v1/webHook'
+  REPORT_API: 'https://d9dfd45c2f2f.ngrok-free.app/v1/integrationPdf'
 
 jobs:
   run-security-scan:
