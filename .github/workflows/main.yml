@@ -6,7 +6,7 @@ on:
       - main
 
 env:
-  REPO_URL: "https://${{ secrets.API_SC_TOKEN }}@Plaid"
+  REPO_URL: "https://${{ secrets.API_SC_TOKEN }}@github.com/Hemangini188/Hemangini"
   BRANCH: 'main'
   FILE_NAME: 'Plaid API Endpoint 1.json'
   TEMP_DIR: 'temp-repo'
