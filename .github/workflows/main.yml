@@ -8,7 +8,7 @@ on:
 env:
   REPO_URL: "https://${{ secrets.API_SC_TOKEN }}@quaint-arabesquely-rubi.ngrok-free.dev"
   BRANCH: 'main'
-  FILE_NAME: 'Freebees Public API.postman_collection.json'
+  FILE_NAME: 'haircut-today-230725.json'
   TEMP_DIR: 'temp-repo'
   SECURITY_SCAN_API: 'https://github.com/v1/startSecurityScan'
   PROJECT_ID: '49e8ce26-69f4-438e-ab57-0220e3670764'
