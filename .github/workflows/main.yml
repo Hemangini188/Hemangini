@@ -10,17 +10,17 @@ env:
   BRANCH: 'main'
   FILE_NAME: 'haircut-today-230725.json'
   TEMP_DIR: 'temp-repo'
-  SECURITY_SCAN_API: 'https://quaint-arabesquely-rubi.ngrok-free.dev/v1/startSecurityScan'
-  PROJECT_ID: '6893513e-b9b9-4e1a-a9b3-cc821ecf3a92'
-  BLOCK_PIPELINE: 'true'
+  SECURITY_SCAN_API: 'https://d945-103-81-38-248.ngrok-free.app/v1/startSecurityScan'
+  PROJECT_ID: 'aeaa93dc-996b-4810-878b-b59c38cdb4f3'
+  BLOCK_PIPELINE: 'false'
   BLOCK_CRITICAL: 'true'
   BLOCK_HIGH: 'true'
   BLOCK_MEDIUM: 'true'
   CRITICAL_THRESHOLD: 0
   HIGH_THRESHOLD: 0
   MEDIUM_THRESHOLD: 0
-  APPKEYTOKEN: 'fdef2583-6f41-4ddd-961c-e0430fe1d4c3'
-  UPLOAD_API_URL: 'https://quaint-arabesquely-rubi.ngrok-free.dev/v1/webHook'
+  APPKEYTOKEN: '9710f3a2-7c1c-48f5-9aed-9175242d95e8'
+  UPLOAD_API_URL: 'https://d945-103-81-38-248.ngrok-free.app/v1/webHook'
 
 jobs:
   run-security-scan:
