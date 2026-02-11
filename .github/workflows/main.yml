@@ -8,11 +8,11 @@ on:
 env:
   REPO_URL: "https://${{ secrets.API_SC_TOKEN }}@github.com/Hemangini188/Hemangini"
   BRANCH: 'main'
-  FILE_NAME: 'Freebees Public API.postman_collection.json'
+  FILE_NAME: 'haircut-today-230725.json'
   TEMP_DIR: 'temp-repo'
   SECURITY_SCAN_API: 'https://quaint-arabesquely-rubi.ngrok-free.dev/v1/startSecurityScan'
-  PROJECT_ID: '1a724fdf-88f6-413f-9f8c-2cb9a8f93c48'
-  BLOCK_PIPELINE: 'false'
+  PROJECT_ID: '6893513e-b9b9-4e1a-a9b3-cc821ecf3a92'
+  BLOCK_PIPELINE: 'true'
   BLOCK_CRITICAL: 'true'
   BLOCK_HIGH: 'true'
   BLOCK_MEDIUM: 'true'
