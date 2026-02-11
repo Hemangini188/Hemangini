@@ -50,7 +50,10 @@ jobs:
         shell: pwsh
         run: |
           Write-Host "Calling Security Scan API..."
-          $apiUrl = "$env:SECURITY_SCAN_API?project_id=$env:PROJECT_ID&user_id=$env:USERID"
+          echo $env:SECURITY_SCAN_API
+          echo $env:PROJECT_ID
+          echo $env:USERID
+          $apiUrl = "${env:SECURITY_SCAN_API}?project_id=${env:PROJECT_ID}&user_id=${env:USERID}"
           $response = curl.exe --silent --request POST --header "Api-Key: $env:APPKEYTOKEN" --header "Content-Type: application/json" --header "Content-Length: 0" $apiUrl
           if (-not $response) {
             echo $apiUrl
