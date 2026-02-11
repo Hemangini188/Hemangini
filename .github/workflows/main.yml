@@ -12,6 +12,7 @@ env:
   TEMP_DIR: 'temp-repo'
   SECURITY_SCAN_API: 'https://d945-103-81-38-248.ngrok-free.app/v1/startSecurityScan'
   PROJECT_ID: 'aeaa93dc-996b-4810-878b-b59c38cdb4f3'
+  USERID: '793029dd-5635-4372-b5b3-ce025fd818f3'
   BLOCK_PIPELINE: 'false'
   BLOCK_CRITICAL: 'true'
   BLOCK_HIGH: 'true'
@@ -49,7 +50,7 @@ jobs:
         shell: pwsh
         run: |
           Write-Host "Calling Security Scan API..."
-          $apiUrl = "$env:SECURITY_SCAN_API/$env:PROJECT_ID"
+          $apiUrl = "$env:SECURITY_SCAN_API?project_id=$env:PROJECT_ID&user_id=$env.USERID"
           $response = curl.exe --silent --request POST --header "Api-Key: $env:APPKEYTOKEN" --header "Content-Type: application/json" --header "Content-Length: 0" $apiUrl
           if (-not $response) {
             throw "No response received from API."
