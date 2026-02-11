@@ -53,6 +53,7 @@ jobs:
           $apiUrl = "$env:SECURITY_SCAN_API?project_id=$env:PROJECT_ID&user_id=$env.USERID"
           $response = curl.exe --silent --request POST --header "Api-Key: $env:APPKEYTOKEN" --header "Content-Type: application/json" --header "Content-Length: 0" $apiUrl
           if (-not $response) {
+            echo $apiUrl
             throw "No response received from API."
           }
 
