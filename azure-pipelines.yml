@@ -4,7 +4,7 @@ trigger:
       - main
 
 variables:
-- group: "BugDazz"
+- group: "Bugdazz new 25-Mar"
 
 - name: REPO_URL
   value: "https://$(API_SC_TOKEN)@github.com/Hemangini188/Hemangini"
