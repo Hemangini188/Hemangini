@@ -8,20 +8,20 @@ on:
 env:
   REPO_URL: "https://${{ secrets.API_SC_TOKEN }}@github.com/Hemangini188/Hemangini"
   BRANCH: 'main'
-  FILE_NAME: 'haircut-today-230725.json'
+  FILE_NAME: 'Haircut Store API.postman_collection 24.json'
   TEMP_DIR: 'temp-repo'
-  SECURITY_SCAN_API: 'https://d945-103-81-38-248.ngrok-free.app/v1/startSecurityScan'
-  PROJECT_ID: 'aeaa93dc-996b-4810-878b-b59c38cdb4f3'
-  USERID: '793029dd-5635-4372-b5b3-ce025fd818f3'
-  BLOCK_PIPELINE: 'false'
+  SECURITY_SCAN_API: 'https://quaint-arabesquely-rubi.ngrok-free.dev/v1/startSecurityScan'
+  PROJECT_ID: 'c4083873-84a4-4a49-a446-aa787f300a66'
+  USERID: '39537c78-9fb9-4041-ad2e-65cf0137a400'
+  BLOCK_PIPELINE: 'true'
   BLOCK_CRITICAL: 'true'
   BLOCK_HIGH: 'true'
   BLOCK_MEDIUM: 'true'
   CRITICAL_THRESHOLD: 0
   HIGH_THRESHOLD: 0
   MEDIUM_THRESHOLD: 0
-  APPKEYTOKEN: '9710f3a2-7c1c-48f5-9aed-9175242d95e8'
-  UPLOAD_API_URL: 'https://d945-103-81-38-248.ngrok-free.app/v1/webHook'
+  APPKEYTOKEN: '2cdbe605-f395-47fb-9643-867b0755883a'
+  UPLOAD_API_URL: 'https://quaint-arabesquely-rubi.ngrok-free.dev/v1/webHook'
 
 jobs:
   run-security-scan:
