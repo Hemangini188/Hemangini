@@ -10,17 +10,18 @@ env:
   BRANCH: 'main'
   FILE_NAME: 'Haircut Store API.postman_collection 24.json'
   TEMP_DIR: 'temp-repo'
-  SECURITY_SCAN_API: 'https://quaint-arabesquely-rubi.ngrok-free.dev/v1/startSecurityScan'
+  SECURITY_SCAN_API: 'https://apiscanner.bugdazz.com/v1/startSecurityScan'
   PROJECT_ID: '02400b5a-b029-491c-8fb9-bf948e7096c1'
+  USERID: '4fa3b258-c835-44b9-b78e-a3df27664cc3'
   BLOCK_PIPELINE: 'true'
   BLOCK_CRITICAL: 'true'
   BLOCK_HIGH: 'true'
   BLOCK_MEDIUM: 'true'
   CRITICAL_THRESHOLD: 0
-  HIGH_THRESHOLD: 5
-  MEDIUM_THRESHOLD: 3
+  HIGH_THRESHOLD: 0
+  MEDIUM_THRESHOLD: 0
   APPKEYTOKEN: 'c26879fc-7fea-41b8-a159-fe441552e772'
-  UPLOAD_API_URL: 'https://quaint-arabesquely-rubi.ngrok-free.dev/v1/webHook'
+  UPLOAD_API_URL: 'https://apiscanner.bugdazz.com/v1/webHook'
 
 jobs:
   run-security-scan:
@@ -49,7 +50,7 @@ jobs:
         shell: pwsh
         run: |
           Write-Host "Calling Security Scan API..."
-          $apiUrl = "$env:SECURITY_SCAN_API/$env:PROJECT_ID"
+          $apiUrl = "${env:SECURITY_SCAN_API}?project_id=${env:PROJECT_ID}&user_id=${env:USERID}"
           $response = curl.exe --silent --request POST --header "Api-Key: $env:APPKEYTOKEN" --header "Content-Type: application/json" --header "Content-Length: 0" $apiUrl
           if (-not $response) {
             throw "No response received from API."
