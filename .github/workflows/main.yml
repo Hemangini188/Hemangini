@@ -11,14 +11,14 @@ env:
   FILE_NAME: 'Haircut Store API.postman_collection 24.json'
   TEMP_DIR: 'temp-repo'
   SECURITY_SCAN_API: 'https://quaint-arabesquely-rubi.ngrok-free.dev/v1/startSecurityScan'
-  PROJECT_ID: '0436d52a-d1cd-415b-9f9b-05ec21cbfd96'
+  PROJECT_ID: '02400b5a-b029-491c-8fb9-bf948e7096c1'
   BLOCK_PIPELINE: 'true'
   BLOCK_CRITICAL: 'true'
   BLOCK_HIGH: 'true'
   BLOCK_MEDIUM: 'true'
   CRITICAL_THRESHOLD: 0
-  HIGH_THRESHOLD: 0
-  MEDIUM_THRESHOLD: 0
+  HIGH_THRESHOLD: 5
+  MEDIUM_THRESHOLD: 3
   APPKEYTOKEN: 'c26879fc-7fea-41b8-a159-fe441552e772'
   UPLOAD_API_URL: 'https://quaint-arabesquely-rubi.ngrok-free.dev/v1/webHook'
 
