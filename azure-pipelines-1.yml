@@ -49,7 +49,7 @@ variables:
   value: '0'
 
 - name: HIGH_THRESHOLD
-  value: '2'
+  value: '0'
 
 - name: MEDIUM_THRESHOLD
   value: '0'
@@ -83,7 +83,7 @@ steps:
     targetType: 'inline'
     script: |
       Write-Host "Starting Security Scan..."
-      $apiUrl = "$(SECURITY_SCAN_API)?project_id=$(PROJECT_ID)&user_id=$(USERID)"
+      $apiUrl = "$(SECURITY_SCAN_API)?project_id=$(PROJECT_ID) & user_id=$(USERID)"
       $headers = @(
         "--header", "Content-Type: application/json",
         "--header", "Api-Key: $(APPKEYTOKEN)",
@@ -150,14 +150,14 @@ steps:
         project_id = "$(PROJECT_ID)"
       } | ConvertTo-Json
       Write-Host "Sending JSON body: $body"
-      Invoke-RestMethod -Uri $reportApi -Method Post -Headers $headers -Body $body -OutFile "haircut-today-230725_20260325_173937.pdf"
+      Invoke-RestMethod -Uri $reportApi -Method Post -Headers $headers -Body $body -OutFile "_20260326_121122.pdf"
       Write-Host "PDF report saved as report.pdf"
 
 - task: PublishPipelineArtifact@1
   displayName: 'Publish Vulnerability Report'
   condition: or(gt(variables['critical'], 0), gt(variables['high'], 0), gt(variables['medium'], 0))
   inputs:
-    targetPath: '$(System.DefaultWorkingDirectory)/haircut-today-230725_20260325_173937.pdf'
+    targetPath: '$(System.DefaultWorkingDirectory)/_20260326_121122.pdf'
     artifact: 'VulnerabilityReport'
     publishLocation: 'pipeline'
 
