@@ -7,13 +7,13 @@ variables:
 - group: "Bugdazz new 25-Mar"
 
 - name: REPO_URL
-  value: "https://$(API_SC_TOKEN)@github.com/Hemangini188/Hemangini"
+  value: "https://$(API_SC_TOKEN)@github.com/atharvdeshpande2712/Bugdazz"
 
 - name: BRANCH
-  value: 'main'
+  value: 'Main'
 
 - name: FILE_NAME
-  value: 'haircut-today-230725.json'
+  value: 'Haircut Store API-06-09-2024 1.json'
 
 - name: SECURITY_SCAN_API
   value: 'https://apiscanner.bugdazz.com/v1/startSecurityScan'
@@ -31,7 +31,7 @@ variables:
   value: 'https://apiscanner.bugdazz.com/v1/integrationPdf'
 
 - name: PROJECT_ID
-  value: '5b4bee18-6edd-4810-af05-17001926c57b'
+  value: '19dc1495-181e-46dc-afbb-f366518e2700'
 
 - name: BLOCK_PIPELINE
   value: 'true'
@@ -49,7 +49,7 @@ variables:
   value: '0'
 
 - name: HIGH_THRESHOLD
-  value: '0'
+  value: '1'
 
 - name: MEDIUM_THRESHOLD
   value: '0'
@@ -83,7 +83,7 @@ steps:
     targetType: 'inline'
     script: |
       Write-Host "Starting Security Scan..."
-      $apiUrl = "$(SECURITY_SCAN_API)?project_id=$(PROJECT_ID)&user_id=$(USERID)"
+      $apiUrl = "$(SECURITY_SCAN_API)?project_id=$(PROJECT_ID) & user_id=$(USERID)"
       $headers = @(
         "--header", "Content-Type: application/json",
         "--header", "Api-Key: $(APPKEYTOKEN)",
@@ -150,14 +150,14 @@ steps:
         project_id = "$(PROJECT_ID)"
       } | ConvertTo-Json
       Write-Host "Sending JSON body: $body"
-      Invoke-RestMethod -Uri $reportApi -Method Post -Headers $headers -Body $body -OutFile "_20260326_121122.pdf"
+      Invoke-RestMethod -Uri $reportApi -Method Post -Headers $headers -Body $body -OutFile "Atharv_20260330_105736.pdf"
       Write-Host "PDF report saved as report.pdf"
 
 - task: PublishPipelineArtifact@1
   displayName: 'Publish Vulnerability Report'
   condition: or(gt(variables['critical'], 0), gt(variables['high'], 0), gt(variables['medium'], 0))
   inputs:
-    targetPath: '$(System.DefaultWorkingDirectory)/_20260326_121122.pdf'
+    targetPath: '$(System.DefaultWorkingDirectory)/Atharv_20260330_105736.pdf'
     artifact: 'VulnerabilityReport'
     publishLocation: 'pipeline'
 
