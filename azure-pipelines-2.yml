@@ -4,7 +4,7 @@ trigger:
       - main
 
 variables:
-- group: "Bugdazz new 25-Marz"
+- group: "Bugdazz new 25-Mar"
 
 - name: REPO_URL
   value: "https://$(API_SC_TOKEN)@github.com/Hemangini188/Hemangini"
@@ -16,22 +16,22 @@ variables:
   value: 'Test collection 5 api.json'
 
 - name: SECURITY_SCAN_API
-  value: 'https://apiscanner.bugdazz.com/v1/startSecurityScan'
+  value: 'https://quaint-arabesquely-rubi.ngrok-free.dev/v1/startSecurityScan'
 
 - name: UPLOAD_API_URL
-  value: 'https://apiscanner.bugdazz.com/v1/webHook'
+  value: 'https://quaint-arabesquely-rubi.ngrok-free.dev/v1/webHook'
 
 - name: APPKEYTOKEN
-  value: 'c26879fc-7fea-41b8-a159-fe441552e772'
+  value: '2cdbe605-f395-47fb-9643-867b0755883a'
 
 - name: USERID
-  value: '4fa3b258-c835-44b9-b78e-a3df27664cc3'
+  value: '39537c78-9fb9-4041-ad2e-65cf0137a400'
 
 - name: REPORT_API
-  value: 'https://apiscanner.bugdazz.com/v1/integrationPdf'
+  value: 'https://quaint-arabesquely-rubi.ngrok-free.dev/v1/integrationPdf'
 
 - name: PROJECT_ID
-  value: '1a18a217-f739-456b-b58b-a4ad640f3923'
+  value: 'c2dd5999-bd01-4613-9a7f-1c0aefb36044'
 
 - name: BLOCK_PIPELINE
   value: 'true'
@@ -150,14 +150,14 @@ steps:
         project_id = "$(PROJECT_ID)"
       } | ConvertTo-Json
       Write-Host "Sending JSON body: $body"
-      Invoke-RestMethod -Uri $reportApi -Method Post -Headers $headers -Body $body -OutFile "_20260330_132906.pdf"
+      Invoke-RestMethod -Uri $reportApi -Method Post -Headers $headers -Body $body -OutFile "_20260330_135139.pdf"
       Write-Host "PDF report saved as report.pdf"
 
 - task: PublishPipelineArtifact@1
   displayName: 'Publish Vulnerability Report'
   condition: or(gt(variables['critical'], 0), gt(variables['high'], 0), gt(variables['medium'], 0))
   inputs:
-    targetPath: '$(System.DefaultWorkingDirectory)/_20260330_132906.pdf'
+    targetPath: '$(System.DefaultWorkingDirectory)/_20260330_135139.pdf'
     artifact: 'VulnerabilityReport'
     publishLocation: 'pipeline'
 
