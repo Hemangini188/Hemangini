@@ -7,13 +7,13 @@ variables:
 - group: "Bugdazz new 25-Mar"
 
 - name: REPO_URL
-  value: "https://$(API_SC_TOKEN)@github.com/atharvdeshpande2712/Bugdazz"
+  value: "https://$(API_SC_TOKEN)@github.com/Hemangini188/Hemangini"
 
 - name: BRANCH
-  value: 'Main'
+  value: 'main'
 
 - name: FILE_NAME
-  value: 'Haircut Store API-06-09-2024 1.json'
+  value: 'Test collection 5 api.json'
 
 - name: SECURITY_SCAN_API
   value: 'https://apiscanner.bugdazz.com/v1/startSecurityScan'
@@ -31,7 +31,7 @@ variables:
   value: 'https://apiscanner.bugdazz.com/v1/integrationPdf'
 
 - name: PROJECT_ID
-  value: '19dc1495-181e-46dc-afbb-f366518e2700'
+  value: '1a18a217-f739-456b-b58b-a4ad640f3923'
 
 - name: BLOCK_PIPELINE
   value: 'true'
@@ -49,7 +49,7 @@ variables:
   value: '0'
 
 - name: HIGH_THRESHOLD
-  value: '1'
+  value: '2'
 
 - name: MEDIUM_THRESHOLD
   value: '0'
@@ -150,14 +150,14 @@ steps:
         project_id = "$(PROJECT_ID)"
       } | ConvertTo-Json
       Write-Host "Sending JSON body: $body"
-      Invoke-RestMethod -Uri $reportApi -Method Post -Headers $headers -Body $body -OutFile "Atharv_20260330_105736.pdf"
+      Invoke-RestMethod -Uri $reportApi -Method Post -Headers $headers -Body $body -OutFile "Test collection 5 api_20260330_133754.pdf"
       Write-Host "PDF report saved as report.pdf"
 
 - task: PublishPipelineArtifact@1
   displayName: 'Publish Vulnerability Report'
   condition: or(gt(variables['critical'], 0), gt(variables['high'], 0), gt(variables['medium'], 0))
   inputs:
-    targetPath: '$(System.DefaultWorkingDirectory)/Atharv_20260330_105736.pdf'
+    targetPath: '$(System.DefaultWorkingDirectory)/Test collection 5 api_20260330_133754.pdf'
     artifact: 'VulnerabilityReport'
     publishLocation: 'pipeline'
 
