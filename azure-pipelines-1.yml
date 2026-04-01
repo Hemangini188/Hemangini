@@ -76,40 +76,30 @@ steps:
       } else {
         throw "File '$(FILE_NAME)' not found in repository."
       }
+
 - task: PowerShell@2
   displayName: 'Run Security Scan'
-  timeoutInMinutes: 120
   inputs:
     targetType: 'inline'
     script: |
       Write-Host "Starting Security Scan..."
-
       $apiUrl = "$(SECURITY_SCAN_API)?project_id=$(PROJECT_ID)&user_id=$(USERID)"
-
-      Write-Host "Calling API: $apiUrl"
-
-      $job = Start-Job -ScriptBlock {
-          param($apiUrl, $token)
-
-          curl.exe --max-time 6000 --location --request POST $apiUrl `
-            --header "Content-Type: application/json" `
-            --header "Api-Key: $token" `
-            --header "Content-Length: 0"
-
-      } -ArgumentList $apiUrl, "$(APPKEYTOKEN)"
-
-      while ($job.State -eq "Running") {
-          Write-Host "⏳ Scan in progress... waiting 30 seconds"
-          Start-Sleep -Seconds 30
-      }
-
-      $response = Receive-Job $job
+      $headers = @(
+        "--header", "Content-Type: application/json",
+        "--header", "Api-Key: $(APPKEYTOKEN)",
+        "--header", "Content-Length: 0"
+      )
+      $args = @(
+      "--max-time", "6000", # 100 minutes timeout
+        "--location",
+        "--request", "POST",
+        $apiUrl
+      ) + $headers
+      $response = & curl.exe @args
       Write-Host "Scan Response: $response"
-
       if ($response -match '"message"\s*:\s*"token expired"') {
         throw "Token expired. Blocking pipeline."
       }
-
       function Extract-Count {
         param ($name)
         if ($response -match '"' + $name + '"\s*:\s*(\d+)') {
@@ -117,24 +107,19 @@ steps:
         }
         return 0
       }
-
       $critical = Extract-Count 'criticalCount'
       $high     = Extract-Count 'highCount'
       $medium   = Extract-Count 'mediumCount'
-
       Write-Host "Severity Summary:"
       Write-Host "Critical: $critical"
       Write-Host "High: $high"
       Write-Host "Medium: $medium"
-
       Write-Host "##vso[task.setvariable variable=critical]$critical"
       Write-Host "##vso[task.setvariable variable=high]$high"
       Write-Host "##vso[task.setvariable variable=medium]$medium"
-
       $criticalThreshold = [int]"$(CRITICAL_THRESHOLD)"
       $highThreshold     = [int]"$(HIGH_THRESHOLD)"
       $mediumThreshold   = [int]"$(MEDIUM_THRESHOLD)"
-
       if ("$(BLOCK_PIPELINE)" -eq 'true') {
         if ("$(BLOCK_CRITICAL)" -eq 'true' -and $critical -gt $criticalThreshold) {
           throw "Blocked due to critical vulnerabilities exceeding threshold."
@@ -145,7 +130,6 @@ steps:
         if ("$(BLOCK_MEDIUM)" -eq 'true' -and $medium -gt $mediumThreshold) {
           throw "Blocked due to medium vulnerabilities exceeding threshold."
         }
-
         Write-Host "No blocking conditions met. Continuing pipeline."
       } else {
         Write-Host "Blocking disabled. Continuing regardless of findings."
