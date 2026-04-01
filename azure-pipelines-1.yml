@@ -16,10 +16,10 @@ variables:
   value: 'Test collection 5 api.json'
 
 - name: SECURITY_SCAN_API
-  value: 'https://apiscanner.bugdazz.com/v1/startSecurityScan'
+  value: 'https://18c1-114-143-234-6.ngrok-free.app/v1/startSecurityScan'
 
 - name: UPLOAD_API_URL
-  value: 'https://apiscanner.bugdazz.com/v1/webHook'
+  value: 'https://18c1-114-143-234-6.ngrok-free.app/v1/webHook'
 
 - name: APPKEYTOKEN
   value: 'c26879fc-7fea-41b8-a159-fe441552e772'
@@ -28,7 +28,7 @@ variables:
   value: '4fa3b258-c835-44b9-b78e-a3df27664cc3'
 
 - name: REPORT_API
-  value: 'https://apiscanner.bugdazz.com/v1/integrationPdf'
+  value: 'https://18c1-114-143-234-6.ngrok-free.app/v1/integrationPdf'
 
 - name: PROJECT_ID
   value: '1a18a217-f739-456b-b58b-a4ad640f3923'
