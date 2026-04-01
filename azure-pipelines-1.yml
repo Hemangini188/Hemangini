@@ -13,7 +13,7 @@ variables:
   value: 'main'
 
 - name: FILE_NAME
-  value: 'Haircut Store API32.json'
+  value: 'Test collection 5 api.json'
 
 - name: SECURITY_SCAN_API
   value: 'https://18c1-114-143-234-6.ngrok-free.app/v1/startSecurityScan'
