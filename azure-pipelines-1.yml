@@ -13,7 +13,7 @@ variables:
   value: 'main'
 
 - name: FILE_NAME
-  value: 'Test collection 5 api.json'
+  value: 'Haircut Store API32.json'
 
 - name: SECURITY_SCAN_API
   value: 'https://18c1-114-143-234-6.ngrok-free.app/v1/startSecurityScan'
@@ -22,16 +22,16 @@ variables:
   value: 'https://18c1-114-143-234-6.ngrok-free.app/v1/webHook'
 
 - name: APPKEYTOKEN
-  value: 'c26879fc-7fea-41b8-a159-fe441552e772'
+  value: '6e2867a7-9e18-4ab0-abd7-d20f89e20a53'
 
 - name: USERID
-  value: '4fa3b258-c835-44b9-b78e-a3df27664cc3'
+  value: '5e9bea75-5211-4856-8632-09be2403be8c'
 
 - name: REPORT_API
   value: 'https://18c1-114-143-234-6.ngrok-free.app/v1/integrationPdf'
 
 - name: PROJECT_ID
-  value: '1a18a217-f739-456b-b58b-a4ad640f3923'
+  value: '37f36f19-5309-428e-b06b-beff1ab7dc68'
 
 - name: BLOCK_PIPELINE
   value: 'true'
@@ -49,7 +49,7 @@ variables:
   value: '0'
 
 - name: HIGH_THRESHOLD
-  value: '2'
+  value: '0'
 
 - name: MEDIUM_THRESHOLD
   value: '0'
@@ -150,14 +150,14 @@ steps:
         project_id = "$(PROJECT_ID)"
       } | ConvertTo-Json
       Write-Host "Sending JSON body: $body"
-      Invoke-RestMethod -Uri $reportApi -Method Post -Headers $headers -Body $body -OutFile "Test collection 5 api_20260330_133754.pdf"
+      Invoke-RestMethod -Uri $reportApi -Method Post -Headers $headers -Body $body -OutFile "_20260401_154736.pdf"
       Write-Host "PDF report saved as report.pdf"
 
 - task: PublishPipelineArtifact@1
   displayName: 'Publish Vulnerability Report'
   condition: or(gt(variables['critical'], 0), gt(variables['high'], 0), gt(variables['medium'], 0))
   inputs:
-    targetPath: '$(System.DefaultWorkingDirectory)/Test collection 5 api_20260330_133754.pdf'
+    targetPath: '$(System.DefaultWorkingDirectory)/_20260401_154736.pdf'
     artifact: 'VulnerabilityReport'
     publishLocation: 'pipeline'
 
