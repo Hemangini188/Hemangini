@@ -83,7 +83,7 @@ steps:
     targetType: 'inline'
     script: |
       Write-Host "Starting Security Scan..."
-      $apiUrl = "$(SECURITY_SCAN_API)?project_id=$(PROJECT_ID) & user_id=$(USERID)"
+      $apiUrl = "$(SECURITY_SCAN_API)?project_id=$(PROJECT_ID)&user_id=$(USERID)"
       $headers = @(
         "--header", "Content-Type: application/json",
         "--header", "Api-Key: $(APPKEYTOKEN)",
