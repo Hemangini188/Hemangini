@@ -10,18 +10,18 @@ env:
   BRANCH: 'main'
   FILE_NAME: 'Test collection 5 api.json'
   TEMP_DIR: 'temp-repo'
-  SECURITY_SCAN_API: 'https://quaint-arabesquely-rubi.ngrok-free.dev/v1/startSecurityScan'
-  PROJECT_ID: '1e934486-4f2e-456d-8c8c-6729ef6af3aa'
-  USERID: '20537ad7-fcff-4f12-9535-692f9aa516f9'
-  BLOCK_PIPELINE: 'false'
+  SECURITY_SCAN_API: 'https://apiscanner.bugdazz.com/v1/startSecurityScan'
+  PROJECT_ID: '4e36e0eb-c9bb-4f59-87db-28783fbdceec'
+  USERID: 'f8c1f409-d546-4811-87a8-a7c74fa0a3ad'
+  BLOCK_PIPELINE: 'true'
   BLOCK_CRITICAL: 'true'
   BLOCK_HIGH: 'true'
   BLOCK_MEDIUM: 'true'
   CRITICAL_THRESHOLD: 0
-  HIGH_THRESHOLD: 0
+  HIGH_THRESHOLD: 1
   MEDIUM_THRESHOLD: 0
-  APPKEYTOKEN: 'e8f3bc0d-fe7e-4c82-aba8-678ffe828a50'
-  UPLOAD_API_URL: 'https://quaint-arabesquely-rubi.ngrok-free.dev/v1/webHook'
+  APPKEYTOKEN: 'fa866547-0a16-472b-815f-a16f979de852'
+  UPLOAD_API_URL: 'https://apiscanner.bugdazz.com/v1/webHook'
 
 jobs:
   run-security-scan:
