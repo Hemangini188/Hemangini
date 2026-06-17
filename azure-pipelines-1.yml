@@ -13,28 +13,28 @@ variables:
   value: 'main'
 
 - name: FILE_NAME
-  value: 'Test collection 5 api.json'
+  value: 'BoldSign API.postman_collection.json'
 
 - name: SECURITY_SCAN_API
-  value: 'https://apiscanner.bugdazz.com/v1/startSecurityScan'
+  value: 'https://12c2-45-252-74-134.ngrok-free.app/v1/startSecurityScan'
 
 - name: UPLOAD_API_URL
-  value: 'https://apiscanner.bugdazz.com/v1/webHook'
+  value: 'https://12c2-45-252-74-134.ngrok-free.app/v1/webHook'
 
 - name: APPKEYTOKEN
-  value: 'fa866547-0a16-472b-815f-a16f979de852'
+  value: '4c049a14-ca09-4e61-93e5-c45bb64c1715'
 
 - name: USERID
-  value: 'f8c1f409-d546-4811-87a8-a7c74fa0a3ad'
+  value: 'e21c971b-9d53-4a5d-a890-a86f8a53b338'
 
 - name: REPORT_API
-  value: 'https://apiscanner.bugdazz.com/v1/integrationPdf'
+  value: 'https://12c2-45-252-74-134.ngrok-free.app/v1/integrationPdf'
 
 - name: PROJECT_ID
-  value: '4e36e0eb-c9bb-4f59-87db-28783fbdceec'
+  value: 'f4b58c1d-82d6-41e9-bc3a-a24874aae401'
 
 - name: BLOCK_PIPELINE
-  value: 'true'
+  value: 'false'
 
 - name: BLOCK_CRITICAL
   value: 'true'
@@ -49,10 +49,10 @@ variables:
   value: '0'
 
 - name: HIGH_THRESHOLD
-  value: '1'
+  value: '0'
 
 - name: MEDIUM_THRESHOLD
-  value: '2'
+  value: '0'
 
 pool:
   vmImage: 'windows-latest'
@@ -150,14 +150,14 @@ steps:
         project_id = "$(PROJECT_ID)"
       } | ConvertTo-Json
       Write-Host "Sending JSON body: $body"
-      Invoke-RestMethod -Uri $reportApi -Method Post -Headers $headers -Body $body -OutFile "Test collection 5 api_20260417_180012.pdf"
+      Invoke-RestMethod -Uri $reportApi -Method Post -Headers $headers -Body $body -OutFile "BoldSign API_20260617_103231.pdf"
       Write-Host "PDF report saved as report.pdf"
 
 - task: PublishPipelineArtifact@1
   displayName: 'Publish Vulnerability Report'
   condition: or(gt(variables['critical'], 0), gt(variables['high'], 0), gt(variables['medium'], 0))
   inputs:
-    targetPath: '$(System.DefaultWorkingDirectory)/Test collection 5 api_20260417_180012.pdf'
+    targetPath: '$(System.DefaultWorkingDirectory)/BoldSign API_20260617_103231.pdf'
     artifact: 'VulnerabilityReport'
     publishLocation: 'pipeline'
 
