@@ -16,10 +16,10 @@ variables:
   value: 'BoldSign API.postman_collection.json'
 
 - name: SECURITY_SCAN_API
-  value: 'https://12c2-45-252-74-134.ngrok-free.app/v1/startSecurityScan'
+  value: 'https://a798-114-143-234-6.ngrok-free.app/v1/startSecurityScan'
 
 - name: UPLOAD_API_URL
-  value: 'https://12c2-45-252-74-134.ngrok-free.app/v1/webHook'
+  value: 'https://a798-114-143-234-6.ngrok-free.app/v1/webHook'
 
 - name: APPKEYTOKEN
   value: '4c049a14-ca09-4e61-93e5-c45bb64c1715'
@@ -28,7 +28,7 @@ variables:
   value: 'e21c971b-9d53-4a5d-a890-a86f8a53b338'
 
 - name: REPORT_API
-  value: 'https://12c2-45-252-74-134.ngrok-free.app/v1/integrationPdf'
+  value: 'https://a798-114-143-234-6.ngrok-free.app/v1/integrationPdf'
 
 - name: PROJECT_ID
   value: 'f4b58c1d-82d6-41e9-bc3a-a24874aae401'
@@ -150,14 +150,14 @@ steps:
         project_id = "$(PROJECT_ID)"
       } | ConvertTo-Json
       Write-Host "Sending JSON body: $body"
-      Invoke-RestMethod -Uri $reportApi -Method Post -Headers $headers -Body $body -OutFile "BoldSign API_20260618_065220.pdf"
+      Invoke-RestMethod -Uri $reportApi -Method Post -Headers $headers -Body $body -OutFile "BoldSign API_20260702_111621.pdf"
       Write-Host "PDF report saved as report.pdf"
 
 - task: PublishPipelineArtifact@1
   displayName: 'Publish Vulnerability Report'
   condition: or(gt(variables['critical'], 0), gt(variables['high'], 0), gt(variables['medium'], 0))
   inputs:
-    targetPath: '$(System.DefaultWorkingDirectory)/BoldSign API_20260618_065220.pdf'
+    targetPath: '$(System.DefaultWorkingDirectory)/BoldSign API_20260702_111621.pdf'
     artifact: 'VulnerabilityReport'
     publishLocation: 'pipeline'
 
