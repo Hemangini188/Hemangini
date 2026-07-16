@@ -16,22 +16,22 @@ variables:
   value: 'BoldSign API.postman_collection.json'
 
 - name: SECURITY_SCAN_API
-  value: 'https://a798-114-143-234-6.ngrok-free.app/v1/startSecurityScan'
+  value: 'https://apiscanner.bugdazz.com/v1/startSecurityScan'
 
 - name: UPLOAD_API_URL
-  value: 'https://a798-114-143-234-6.ngrok-free.app/v1/webHook'
+  value: 'https://apiscanner.bugdazz.com/v1/webHook'
 
 - name: APPKEYTOKEN
-  value: '4c049a14-ca09-4e61-93e5-c45bb64c1715'
+  value: '312db202-ab6f-42ae-b384-75e08c2b9e6e'
 
 - name: USERID
-  value: 'e21c971b-9d53-4a5d-a890-a86f8a53b338'
+  value: 'ac87261b-6365-4fa4-99ef-a85ae241eeb8'
 
 - name: REPORT_API
-  value: 'https://a798-114-143-234-6.ngrok-free.app/v1/integrationPdf'
+  value: 'https://apiscanner.bugdazz.com/v1/integrationPdf'
 
 - name: PROJECT_ID
-  value: 'f4b58c1d-82d6-41e9-bc3a-a24874aae401'
+  value: 'fd543ab9-0115-42c1-8296-b5bfa999fbe6'
 
 - name: BLOCK_PIPELINE
   value: 'true'
@@ -49,7 +49,7 @@ variables:
   value: '0'
 
 - name: HIGH_THRESHOLD
-  value: '1'
+  value: '0'
 
 - name: MEDIUM_THRESHOLD
   value: '0'
@@ -150,14 +150,14 @@ steps:
         project_id = "$(PROJECT_ID)"
       } | ConvertTo-Json
       Write-Host "Sending JSON body: $body"
-      Invoke-RestMethod -Uri $reportApi -Method Post -Headers $headers -Body $body -OutFile "BoldSign API_20260702_111621.pdf"
+      Invoke-RestMethod -Uri $reportApi -Method Post -Headers $headers -Body $body -OutFile "_20260716_112733.pdf"
       Write-Host "PDF report saved as report.pdf"
 
 - task: PublishPipelineArtifact@1
   displayName: 'Publish Vulnerability Report'
   condition: or(gt(variables['critical'], 0), gt(variables['high'], 0), gt(variables['medium'], 0))
   inputs:
-    targetPath: '$(System.DefaultWorkingDirectory)/BoldSign API_20260702_111621.pdf'
+    targetPath: '$(System.DefaultWorkingDirectory)/_20260716_112733.pdf'
     artifact: 'VulnerabilityReport'
     publishLocation: 'pipeline'
 
