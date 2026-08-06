@@ -4,7 +4,7 @@ trigger:
       - main
 
 variables:
-- group: "Bugdazz new 25-Mar"
+- group: "BugdazzNew26"
 
 - name: REPO_URL
   value: "https://$(API_SC_TOKEN)@github.com/Hemangini188/Hemangini"
@@ -16,25 +16,25 @@ variables:
   value: 'BoldSign API.postman_collection.json'
 
 - name: SECURITY_SCAN_API
-  value: 'https://apiscanner.bugdazz.com/v1/startSecurityScan'
+  value: 'https://quaint-arabesquely-rubi.ngrok-free.dev/v1/startSecurityScan'
 
 - name: UPLOAD_API_URL
-  value: 'https://apiscanner.bugdazz.com/v1/webHook'
+  value: 'https://quaint-arabesquely-rubi.ngrok-free.dev/v1/webHook'
 
 - name: APPKEYTOKEN
-  value: '312db202-ab6f-42ae-b384-75e08c2b9e6e'
+  value: 'd4592650-8b9e-42dd-9e09-d8042813c6e5'
 
 - name: USERID
-  value: 'ac87261b-6365-4fa4-99ef-a85ae241eeb8'
+  value: 'fa7f5201-1bd1-43aa-95c9-26c535773f1c'
 
 - name: REPORT_API
-  value: 'https://apiscanner.bugdazz.com/v1/integrationPdf'
+  value: 'https://quaint-arabesquely-rubi.ngrok-free.dev/v1/integrationPdf'
 
 - name: PROJECT_ID
-  value: 'fd543ab9-0115-42c1-8296-b5bfa999fbe6'
+  value: '4869881c-5c0c-40a8-a1d1-407e4a651d5e'
 
 - name: BLOCK_PIPELINE
-  value: 'true'
+  value: 'false'
 
 - name: BLOCK_CRITICAL
   value: 'true'
@@ -150,14 +150,14 @@ steps:
         project_id = "$(PROJECT_ID)"
       } | ConvertTo-Json
       Write-Host "Sending JSON body: $body"
-      Invoke-RestMethod -Uri $reportApi -Method Post -Headers $headers -Body $body -OutFile "_20260716_112733.pdf"
+      Invoke-RestMethod -Uri $reportApi -Method Post -Headers $headers -Body $body -OutFile "BoldSign API_20260806_101618.pdf"
       Write-Host "PDF report saved as report.pdf"
 
 - task: PublishPipelineArtifact@1
   displayName: 'Publish Vulnerability Report'
   condition: or(gt(variables['critical'], 0), gt(variables['high'], 0), gt(variables['medium'], 0))
   inputs:
-    targetPath: '$(System.DefaultWorkingDirectory)/_20260716_112733.pdf'
+    targetPath: '$(System.DefaultWorkingDirectory)/BoldSign API_20260806_101618.pdf'
     artifact: 'VulnerabilityReport'
     publishLocation: 'pipeline'
 
