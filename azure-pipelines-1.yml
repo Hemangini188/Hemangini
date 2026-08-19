@@ -13,7 +13,7 @@ variables:
   value: 'main'
 
 - name: FILE_NAME
-  value: 'BoldSign API.postman_collection.json'
+  value: 'Books API Service documentation.postman_collection.json'
 
 - name: SECURITY_SCAN_API
   value: 'https://quaint-arabesquely-rubi.ngrok-free.dev/v1/startSecurityScan'
@@ -31,7 +31,7 @@ variables:
   value: 'https://quaint-arabesquely-rubi.ngrok-free.dev/v1/integrationPdf'
 
 - name: PROJECT_ID
-  value: '4869881c-5c0c-40a8-a1d1-407e4a651d5e'
+  value: '7f5b661e-7beb-460b-9e6c-9fbc45da48be'
 
 - name: BLOCK_PIPELINE
   value: 'false'
@@ -150,14 +150,14 @@ steps:
         project_id = "$(PROJECT_ID)"
       } | ConvertTo-Json
       Write-Host "Sending JSON body: $body"
-      Invoke-RestMethod -Uri $reportApi -Method Post -Headers $headers -Body $body -OutFile "BoldSign API_20260806_101618.pdf"
+      Invoke-RestMethod -Uri $reportApi -Method Post -Headers $headers -Body $body -OutFile "_20260819_075553.pdf"
       Write-Host "PDF report saved as report.pdf"
 
 - task: PublishPipelineArtifact@1
   displayName: 'Publish Vulnerability Report'
   condition: or(gt(variables['critical'], 0), gt(variables['high'], 0), gt(variables['medium'], 0))
   inputs:
-    targetPath: '$(System.DefaultWorkingDirectory)/BoldSign API_20260806_101618.pdf'
+    targetPath: '$(System.DefaultWorkingDirectory)/_20260819_075553.pdf'
     artifact: 'VulnerabilityReport'
     publishLocation: 'pipeline'
 
