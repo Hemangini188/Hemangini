@@ -4,16 +4,16 @@ trigger:
       - main
 
 variables:
-- group: "BugdazzNew26"
+- group: "BugDazzNew26"
 
 - name: REPO_URL
-  value: "https://$(API_SC_TOKEN)@github.com/Hemangini188/Hemangini"
+  value: "https://$(API_SC_TOKEN)@"
 
 - name: BRANCH
-  value: 'main'
+  value: ''
 
 - name: FILE_NAME
-  value: 'Books API Service documentation.postman_collection.json'
+  value: ''
 
 - name: SECURITY_SCAN_API
   value: 'https://quaint-arabesquely-rubi.ngrok-free.dev/v1/startSecurityScan'
@@ -22,16 +22,16 @@ variables:
   value: 'https://quaint-arabesquely-rubi.ngrok-free.dev/v1/webHook'
 
 - name: APPKEYTOKEN
-  value: 'd4592650-8b9e-42dd-9e09-d8042813c6e5'
+  value: '39ac23ee-11bb-410c-a51f-e1cd9a384852'
 
 - name: USERID
-  value: 'fa7f5201-1bd1-43aa-95c9-26c535773f1c'
+  value: '4a443a74-c52c-4f4c-8880-49a93b93a2fc'
 
 - name: REPORT_API
   value: 'https://quaint-arabesquely-rubi.ngrok-free.dev/v1/integrationPdf'
 
 - name: PROJECT_ID
-  value: '7f5b661e-7beb-460b-9e6c-9fbc45da48be'
+  value: ''
 
 - name: BLOCK_PIPELINE
   value: 'false'
@@ -150,14 +150,14 @@ steps:
         project_id = "$(PROJECT_ID)"
       } | ConvertTo-Json
       Write-Host "Sending JSON body: $body"
-      Invoke-RestMethod -Uri $reportApi -Method Post -Headers $headers -Body $body -OutFile "_20260819_075553.pdf"
+      Invoke-RestMethod -Uri $reportApi -Method Post -Headers $headers -Body $body -OutFile "_20260901_064037.pdf"
       Write-Host "PDF report saved as report.pdf"
 
 - task: PublishPipelineArtifact@1
   displayName: 'Publish Vulnerability Report'
   condition: or(gt(variables['critical'], 0), gt(variables['high'], 0), gt(variables['medium'], 0))
   inputs:
-    targetPath: '$(System.DefaultWorkingDirectory)/_20260819_075553.pdf'
+    targetPath: '$(System.DefaultWorkingDirectory)/_20260901_064037.pdf'
     artifact: 'VulnerabilityReport'
     publishLocation: 'pipeline'
 
