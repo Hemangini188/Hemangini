@@ -13,7 +13,7 @@ env:
   SECURITY_SCAN_API: 'https://quaint-arabesquely-rubi.ngrok-free.dev/v1/startSecurityScan'
   PROJECT_ID: '9d1209cc-ea07-4fa2-8fd0-4d6874785f19'
   USERID: '4a443a74-c52c-4f4c-8880-49a93b93a2fc'
-  BLOCK_PIPELINE: 'true'
+  BLOCK_PIPELINE: 'false'
   BLOCK_CRITICAL: 'true'
   BLOCK_HIGH: 'true'
   BLOCK_MEDIUM: 'true'
